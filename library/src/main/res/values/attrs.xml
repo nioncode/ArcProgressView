@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<declare-styleable name="GaugeView">
+		<attr name="radialForegroundColor" format="color" />
+		<attr name="radialForegroundStrokeWidth" format="dimension" />
+		<attr name="radialBackgroundColor" format="color" />
+		<attr name="radialBackgroundStrokeWidth" format="dimension" />
+		<attr name="initialAngle" format="float" />
+		<attr name="minAngle" format="float" />
+		<attr name="maxAngle" format="float" />
+		<attr name="startAngle" format="float" />
+	</declare-styleable>
+
+</resources>

@@ -119,7 +119,7 @@ public class GaugeView extends View {
 	}
 
 	public void setAngle(float angle) {
-		mAngle = angle;
+		mAngle = ensureValidAngle(angle);
 		invalidate();
 	}
 
@@ -218,7 +218,7 @@ public class GaugeView extends View {
 	}
 
 	private void parseStyledAttributes(TypedArray a) {
-		mAngle = a.getFloat(R.styleable.GaugeView_initialAngle, DEFAULT_INITIAL_ANGLE);
+		mAngle = ensureValidAngle(a.getFloat(R.styleable.GaugeView_initialAngle, DEFAULT_INITIAL_ANGLE));
 		mMinAngle = a.getFloat(R.styleable.GaugeView_minAngle, DEFAULT_MIN_ANGLE);
 		mMaxAngle = a.getFloat(R.styleable.GaugeView_maxAngle, DEFAULT_MAX_ANGLE);
 		mStartAngle = a.getFloat(R.styleable.GaugeView_startAngle, DEFAULT_START_ANGLE);
@@ -248,6 +248,16 @@ public class GaugeView extends View {
 		mRadialBackground.setColor(DEFAULT_RADIAL_BACKGROUND_COLOR);
 		mRadialBackground.setStrokeWidth(DEFAULT_RADIAL_BACKGROUND_STROKE_WIDTH);
 		mRadialBackground.setStyle(Paint.Style.STROKE);
+	}
+
+	private float ensureValidAngle(float angle) {
+		if (angle > mMaxAngle) {
+			return mMaxAngle;
+		} else if (angle < mMinAngle) {
+			return mMinAngle;
+		} else {
+			return angle;
+		}
 	}
 
 }

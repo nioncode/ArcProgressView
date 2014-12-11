@@ -57,7 +57,7 @@ public class GaugeView extends View {
 		}
 	}
 
-	@TargetApi(21)
+	@TargetApi(VERSION_CODES.LOLLIPOP)
 	public GaugeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
 		init();

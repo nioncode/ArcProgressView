@@ -123,6 +123,20 @@ public class GaugeView extends View {
 		invalidate();
 	}
 
+	public float getAnglePercentage() {
+		return mAngle / (mMaxAngle - mMinAngle);
+	}
+
+	public void setAnglePercentage(float percentage) {
+		if (percentage > 1.0f) {
+			percentage = 1.0f;
+		} else if (percentage < 0.0f) {
+			percentage = 0.0f;
+		}
+		final float angle = (mMaxAngle - mMinAngle) * percentage;
+		setAngle(angle);
+	}
+
 	public float getMinAngle() {
 		return mMinAngle;
 	}

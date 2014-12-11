@@ -64,23 +64,22 @@ public class MainActivity extends ActionBarActivity {
 		float randomOffset = ((new Random().nextInt(20)) - 10) / (float) 100; // randomize percentage by +- 10%
 		percentage += randomOffset;
 
-		float angle = (mGaugeView.getMaxAngle() - mGaugeView.getMinAngle()) * percentage;
 		reverseValue = !reverseValue;
 
 		String text = String.format("%1$d%%", (int) (percentage * 100));
 		mTextView.setText(text);
 
 		if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
-			animate(angle);
+			animate(percentage);
 		} else {
-			mGaugeView.setAngle(angle);
+			mGaugeView.setAnglePercentage(percentage);
 		}
 	}
 
 	@TargetApi(VERSION_CODES.HONEYCOMB)
-	private void animate(float angle) {
+	private void animate(float anglePercentage) {
 		ObjectAnimator mAnimator;
-		mAnimator = ObjectAnimator.ofFloat(mGaugeView, "angle", angle);
+		mAnimator = ObjectAnimator.ofFloat(mGaugeView, "anglePercentage", anglePercentage);
 		mAnimator.start();
 	}
 

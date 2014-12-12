@@ -11,14 +11,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import de.nioncode.gaugeview.GaugeView;
+import de.nioncode.gaugeview.ArcProgressView;
 
 import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
 
-	private GaugeView mGaugeView;
+	private ArcProgressView mArcProgressView;
 	private TextView mTextView;
 
 	@Override
@@ -26,8 +26,8 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mGaugeView = (GaugeView) findViewById(R.id.gauge);
-		mTextView = (TextView) findViewById(R.id.gaugeTxt);
+		mArcProgressView = (ArcProgressView) findViewById(R.id.progressArc);
+		mTextView = (TextView) findViewById(R.id.progressText);
 
 		findViewById(R.id.btn_animate).setOnClickListener(new OnClickListener() {
 			@Override
@@ -72,14 +72,14 @@ public class MainActivity extends ActionBarActivity {
 		if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
 			animate(percentage);
 		} else {
-			mGaugeView.setAnglePercentage(percentage);
+			mArcProgressView.setAnglePercentage(percentage);
 		}
 	}
 
 	@TargetApi(VERSION_CODES.HONEYCOMB)
 	private void animate(float anglePercentage) {
 		ObjectAnimator mAnimator;
-		mAnimator = ObjectAnimator.ofFloat(mGaugeView, "anglePercentage", anglePercentage);
+		mAnimator = ObjectAnimator.ofFloat(mArcProgressView, "anglePercentage", anglePercentage);
 		mAnimator.start();
 	}
 

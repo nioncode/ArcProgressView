@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:gauge="http://schemas.android.com/apk/res-auto"
+	xmlns:arc="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
@@ -13,7 +13,7 @@
 		>
 
 		<TextView
-			android:id="@+id/gaugeTxt"
+			android:id="@+id/progressText"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="100%"
@@ -21,16 +21,16 @@
 			android:layout_centerInParent="true"
 			/>
 
-		<de.nioncode.gaugeview.GaugeView
-			android:id="@+id/gauge"
+		<de.nioncode.gaugeview.ArcProgressView
+			android:id="@+id/progressArc"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			gauge:radialForegroundColor="#ff0000"
-			gauge:radialBackgroundColor="#15000000"
-			gauge:radialBackgroundStrokeWidth="1dp"
-			gauge:radialForegroundStrokeWidth="3dp"
-			gauge:startAngle="-90"
-			gauge:initialAngle="63"
+			arc:radialForegroundColor="#ff0000"
+			arc:radialBackgroundColor="#15000000"
+			arc:radialBackgroundStrokeWidth="1dp"
+			arc:radialForegroundStrokeWidth="3dp"
+			arc:startAngle="-90"
+			arc:initialAngle="63"
 			android:layout_centerInParent="true"
 			/>
 

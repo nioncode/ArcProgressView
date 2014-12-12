@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-public class GaugeView extends View {
+public class ArcProgressView extends View {
 	private static final float DEFAULT_INITIAL_ANGLE = 0.0f;
 	private static final float DEFAULT_MIN_ANGLE = 0.0f;
 	private static final float DEFAULT_MAX_ANGLE = 360.0f;
@@ -30,15 +30,15 @@ public class GaugeView extends View {
 	private Paint mRadialBackground;
 	private RectF mBounds;
 
-	public GaugeView(Context context) {
+	public ArcProgressView(Context context) {
 		super(context);
 		init();
 	}
 
-	public GaugeView(Context context, AttributeSet attrs) {
+	public ArcProgressView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
-		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.GaugeView, 0, 0);
+		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ArcProgressView, 0, 0);
 		try {
 			parseStyledAttributes(a);
 		} finally {
@@ -46,10 +46,10 @@ public class GaugeView extends View {
 		}
 	}
 
-	public GaugeView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public ArcProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		init();
-		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.GaugeView, defStyleAttr, 0);
+		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ArcProgressView, defStyleAttr, 0);
 		try {
 			parseStyledAttributes(a);
 		} finally {
@@ -58,10 +58,10 @@ public class GaugeView extends View {
 	}
 
 	@TargetApi(VERSION_CODES.LOLLIPOP)
-	public GaugeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+	public ArcProgressView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
 		init();
-		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.GaugeView, defStyleAttr,
+		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ArcProgressView, defStyleAttr,
 		                                                         defStyleRes);
 		try {
 			parseStyledAttributes(a);
@@ -232,17 +232,17 @@ public class GaugeView extends View {
 	}
 
 	private void parseStyledAttributes(TypedArray a) {
-		mAngle = ensureValidAngle(a.getFloat(R.styleable.GaugeView_initialAngle, DEFAULT_INITIAL_ANGLE));
-		mMinAngle = a.getFloat(R.styleable.GaugeView_minAngle, DEFAULT_MIN_ANGLE);
-		mMaxAngle = a.getFloat(R.styleable.GaugeView_maxAngle, DEFAULT_MAX_ANGLE);
-		mStartAngle = a.getFloat(R.styleable.GaugeView_startAngle, DEFAULT_START_ANGLE);
-		final int radialForegroundColor = a.getColor(R.styleable.GaugeView_radialForegroundColor,
+		mAngle = ensureValidAngle(a.getFloat(R.styleable.ArcProgressView_initialAngle, DEFAULT_INITIAL_ANGLE));
+		mMinAngle = a.getFloat(R.styleable.ArcProgressView_minAngle, DEFAULT_MIN_ANGLE);
+		mMaxAngle = a.getFloat(R.styleable.ArcProgressView_maxAngle, DEFAULT_MAX_ANGLE);
+		mStartAngle = a.getFloat(R.styleable.ArcProgressView_startAngle, DEFAULT_START_ANGLE);
+		final int radialForegroundColor = a.getColor(R.styleable.ArcProgressView_radialForegroundColor,
 		                                             DEFAULT_RADIAL_FOREGROUND_COLOR);
-		final float radialForegroundStrokeWidth = a.getDimension(R.styleable.GaugeView_radialForegroundStrokeWidth,
+		final float radialForegroundStrokeWidth = a.getDimension(R.styleable.ArcProgressView_radialForegroundStrokeWidth,
 		                                                         DEFAULT_RADIAL_FOREGROUND_STROKE_WIDTH);
-		final int radialBackgroundColor = a.getColor(R.styleable.GaugeView_radialBackgroundColor,
+		final int radialBackgroundColor = a.getColor(R.styleable.ArcProgressView_radialBackgroundColor,
 		                                             DEFAULT_RADIAL_BACKGROUND_COLOR);
-		final float radialBackgroundStrokeWidth = a.getDimension(R.styleable.GaugeView_radialBackgroundStrokeWidth,
+		final float radialBackgroundStrokeWidth = a.getDimension(R.styleable.ArcProgressView_radialBackgroundStrokeWidth,
 		                                                         DEFAULT_RADIAL_BACKGROUND_STROKE_WIDTH);
 
 		mRadialForeground.setColor(radialForegroundColor);

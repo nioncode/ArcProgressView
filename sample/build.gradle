@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "de.nioncode.gaugeviewsample"
+        applicationId "com.github.nioncode.arcprogressview.sample"
         minSdkVersion 8
         targetSdkVersion 21
         versionCode 1

@@ -1,4 +1,4 @@
-package de.nioncode.gaugeviewsample;
+package com.github.nioncode.arcprogressview.sample;
 
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -11,7 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import de.nioncode.gaugeview.ArcProgressView;
+import com.github.nioncode.arcprogressview.ArcProgressView;
 
 import java.util.Random;
 

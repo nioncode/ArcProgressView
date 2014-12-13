@@ -1,4 +1,4 @@
-package de.nioncode.gaugeview;
+package com.github.nioncode.arcprogressview;
 
 import android.annotation.TargetApi;
 import android.content.Context;

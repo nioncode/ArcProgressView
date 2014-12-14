@@ -85,7 +85,11 @@ public class ArcProgressView extends View {
 	 * @return Size information bit mask as defined by
 	 * {@link #MEASURED_SIZE_MASK} and {@link #MEASURED_STATE_TOO_SMALL}.
 	 */
-	public static int resolveSizeAndState(int size, int measureSpec, int childMeasuredState) {
+	public static int resolveSizeAndStateCompat(int size, int measureSpec, int childMeasuredState) {
+		if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
+			return resolveSizeAndStateSafe(size, measureSpec, childMeasuredState);
+		}
+
 		int result = size;
 		int specMode = MeasureSpec.getMode(measureSpec);
 		int specSize = MeasureSpec.getSize(measureSpec);
@@ -95,11 +99,7 @@ public class ArcProgressView extends View {
 				break;
 			case MeasureSpec.AT_MOST:
 				if (specSize < size) {
-					if (VERSION.SDK_INT > VERSION_CODES.HONEYCOMB) {
-						result = specSize | MEASURED_STATE_TOO_SMALL;
-					} else {
-						result = specSize;
-					}
+					result = specSize;
 				} else {
 					result = size;
 				}
@@ -108,11 +108,14 @@ public class ArcProgressView extends View {
 				result = specSize;
 				break;
 		}
-		if (VERSION.SDK_INT > VERSION_CODES.HONEYCOMB) {
-			return result | (childMeasuredState & MEASURED_STATE_MASK);
-		}
 		return result;
 	}
+
+	@TargetApi(VERSION_CODES.HONEYCOMB)
+	private static int resolveSizeAndStateSafe(int size, int measureSpec, int childMeasuredState) {
+		return resolveSizeAndState(size, measureSpec, childMeasuredState);
+	}
+
 
 	public float getAngle() {
 		return mAngle;
@@ -214,10 +217,10 @@ public class ArcProgressView extends View {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		final int minWidth = getPaddingLeft() + getPaddingRight() + getSuggestedMinimumWidth();
-		final int width = resolveSizeAndState(minWidth, widthMeasureSpec, 1);
+		final int width = resolveSizeAndStateCompat(minWidth, widthMeasureSpec, 1);
 
 		// Make the height as high as the MeasureSpec allows while trying to make it the same size as the width.
-		final int height = resolveSizeAndState(MeasureSpec.getSize(width), heightMeasureSpec, 0);
+		final int height = resolveSizeAndStateCompat(MeasureSpec.getSize(width), heightMeasureSpec, 0);
 
 		setMeasuredDimension(width, height);
 	}

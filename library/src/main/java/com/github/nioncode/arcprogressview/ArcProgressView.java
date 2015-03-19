@@ -72,7 +72,7 @@ public class ArcProgressView extends View {
 
 	/**
 	 * NOTE: Adapted from Platform-21 View.java
-	 * <p/>
+	 * <p>
 	 * Utility to reconcile a desired size and state, with constraints imposed
 	 * by a MeasureSpec.  Will take the desired size, unless a different size
 	 * is imposed by the constraints.  The returned value is a compound integer,
